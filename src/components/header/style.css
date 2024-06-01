@@ -1,0 +1,27 @@
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    padding-left: 20px;
+    width: auto;
+    height: auto;
+}
+
+.buttons {
+    display: flex;
+    box-sizing: border-box;
+}
