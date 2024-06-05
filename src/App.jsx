@@ -11,7 +11,8 @@ import fetchAdDetails from './utils/fetchAdDetails'
 import ErrorPage from './pages/error'
 import AdEditWrappe from './pages/editAd'
 import { useState, useEffect } from 'react'
-import { Routes, Route, Navigate, useParams, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useParams, useNavigate, HashRouter } from "react-router-dom";
+
 
 const ProtectedRouteAdmin = ({
     role,

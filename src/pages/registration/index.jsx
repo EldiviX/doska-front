@@ -65,7 +65,7 @@ export default function Registration() {
 
 
     return (
-        <Paper className='login-peper'>
+        <div className='login-peper'>
             <Typography classes={{ root: styles.title }} variant="h5">
                 Создание аккаунта
             </Typography>
@@ -102,6 +102,6 @@ export default function Registration() {
             <Button onClick={() => registerUser()}  size="large" variant="contained" fullWidth>
                 Зарегистрироваться
             </Button>
-        </Paper>
+        </div>
     );
 };

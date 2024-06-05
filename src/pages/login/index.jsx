@@ -71,7 +71,7 @@ export default function Login() {
 
 
     return (
-        <Paper className="login-peper">
+        <div className="login-peper">
             <Typography classes={{ root: styles.title }} variant="h5">
                 Вход в аккаунт
             </Typography>
@@ -98,6 +98,6 @@ export default function Login() {
             <Button onClick={() => loginUser()} size="large" variant="contained" fullWidth>
                 Войти
             </Button>
-        </Paper>
+        </div>
     );
 };

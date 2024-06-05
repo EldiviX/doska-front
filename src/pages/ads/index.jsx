@@ -22,9 +22,9 @@ export default function AdsPage() {
             <div className="container">
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                     <Tabs onSaveValue={handleChange}/>
-                    <div style={{marginTop: '13px'}}>
+                    <div style={{marginTop: '14px'}}>
                     <FormControl variant="outlined" size="small" sx={{ m: 1, width: 140, marginRight: '17px', marginTop: 'auto'}}>
-                        <InputLabel id="select-type-label" style={{marginTop: '0px'}}>Категория</InputLabel>
+                        <InputLabel id="select-type-label">Категория</InputLabel>
                         <Select
                             labelId="select-type-label"
                             id="select-type"
