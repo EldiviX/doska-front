@@ -16,11 +16,11 @@ export const Ads = ({_id, title, price, imageUrl, category, hendleRemoveAd}) => 
     const [typeObj, setType] = useOutletContext();
     
     const onClickRemove = () => {
-        fetch('http://localhost:4444/ads/' + _id, {
+        fetch('https://doska-ads.ru:8443/ads/' + _id, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+            },
         });
         hendleRemoveAd(_id);
     };
@@ -62,7 +62,7 @@ export const Ads = ({_id, title, price, imageUrl, category, hendleRemoveAd}) => 
                     <div className="image-box">
                         <img
                         className="image"
-                        src={'http://localhost:4444' + imageUrl}
+                        src={'https://doska-ads.ru:8443' + imageUrl}
                         alt={title}
                         />
                     </div>

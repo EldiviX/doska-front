@@ -10,7 +10,7 @@ export default function Moderator() {
     const [ads, setAds] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:4444/ads')
+        axios.get('https://doska-ads.ru:8443/ads')
             .then((response) => {
                 console.log('Данные из MongoDB:', response.data);
                 setAds(response.data);
@@ -54,7 +54,7 @@ const Ads = ({_id, title, price, imageUrl}) => {
                     <div className="image-box">
                         <img
                         className="image"
-                        src={'http://localhost:4444' + imageUrl}
+                        src={'https://doska-ads.ru:8443' + imageUrl}
                         alt={title}
                         />
                     </div>

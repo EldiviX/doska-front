@@ -18,10 +18,11 @@ export default function New() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:4444/ads/')
+        axios.get('https://doska-ads.ru:8443/ads/')
             .then((response) => {
                 console.log('Данные из MongoDB:', response.data);
-                setAds(response.data);
+                const reversedAds = response.data.reverse();
+                setAds(reversedAds);
             })
             .catch((error) => {
                 console.error('Ошибка при запросе:', error);

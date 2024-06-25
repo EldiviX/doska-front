@@ -28,7 +28,7 @@ export default function Create() {
     const createAds = async () => {
         try {
             console.log('@'+imageUrl);
-            const response = await fetch('http://localhost:4444/ads', {
+            const response = await fetch('https://doska-ads.ru:8443/ads', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,10 +90,10 @@ export default function Create() {
             const formData = new FormData();
             const file = event.target.files[0];
             formData.append('image', file);
-            const { data } = await axios.post('http://localhost:4444/upload', formData, {
+            const { data } = await axios.post('https://doska-ads.ru:8443/upload', formData, {
                 headers: {
-                  'Content-Type': 'multipart/form-data',
-                  'Authorization': 'Bearer ' + token
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Bearer ' + token
                 }
             });
             console.log(data.url);
@@ -132,19 +132,19 @@ export default function Create() {
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                         >
-                            <MenuItem value={'Без категории'}>Без категории 😐</MenuItem>
-                            <MenuItem value={'Одежда и аксессуары'}>Одежда и аксессуары 👕👜</MenuItem>
-                            <MenuItem value={'Электроника'}>Электроника 📱🖥</MenuItem>
-                            <MenuItem value={'Ювелирные изделия и часы'}>Ювелирные изделия и часы ✨🕰</MenuItem>
-                            <MenuItem value={'Медиа и развлечения'}>Медиа и развлечения 🎬</MenuItem>
-                            <MenuItem value={'Товары для детей'}>Товары для детей 🧒🎀</MenuItem>
-                            <MenuItem value={'Книги и канцелярия'}>Книги и канцелярия 📚</MenuItem>
-                            <MenuItem value={'Строительство и ремонт'}>Строительство и ремонт 🛠️🔧</MenuItem>
-                            <MenuItem value={'Авто и мото'}>Авто и мото 🚗🚲</MenuItem>
-                            <MenuItem value={'Продукты питания'}>Продукты питания 🍎🍔</MenuItem>
-                            <MenuItem value={'Вакансии'}>Вакансии 📝💼</MenuItem>
-                            <MenuItem value={'Недвижимость'}>Недвижимость 🏠📈</MenuItem>
-                            <MenuItem value={'Животные'}>Животные 🐶🐱</MenuItem>
+                            <MenuItem value={'Без категории'}>❌ Без категории</MenuItem>
+                            <MenuItem value={'Недвижимость'}>🏠 Недвижимость</MenuItem>
+                            <MenuItem value={'Вакансии'}>💼 Вакансии</MenuItem>
+                            <MenuItem value={'Животные'}>🐶 Животные</MenuItem>
+                            <MenuItem value={'Электроника'}>💻 Электроника</MenuItem>
+                            <MenuItem value={'Одежда и аксессуары'}>👕 Одежда и аксессуары</MenuItem>
+                            <MenuItem value={'Ювелирные изделия и часы'}>⌚ Ювелирные изделия и часы</MenuItem>
+                            <MenuItem value={'Медиа и развлечения'}>🎬 Медиа и развлечения</MenuItem>
+                            <MenuItem value={'Товары для детей'}>👶 Товары для детей</MenuItem>
+                            <MenuItem value={'Книги и канцелярия'}>📚 Книги и канцелярия</MenuItem>
+                            <MenuItem value={'Строительство и ремонт'}>🛠️ Строительство и ремонт</MenuItem>
+                            <MenuItem value={'Авто и мото'}>🚗 Авто и мото</MenuItem>
+                            <MenuItem value={'Продукты питания'}>🍎 Продукты питания</MenuItem>
                         </Select>
                     </div>
                     <div className="create-line">
@@ -197,6 +197,8 @@ export default function Create() {
                         <TextField 
                             className='create-input'
                             maxLength={50}
+                            multiple
+                            rows={10}
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                             inputProps={{
@@ -224,7 +226,7 @@ export default function Create() {
                         onChange={handleChangeFile}
                     />
                     <div style={{position: 'absolute', width: '300px', height: '210px', margin: '0 auto', borderRadius: '8px' }}>
-                    <img src={imageUrl ? `http://localhost:4444${imageUrl}` : image}  style={{width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={imageUrl ? `https://doska-ads.ru:8443${imageUrl}` : image}  style={{width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     {/* <img id="uploaded-image" src="#" alt="Uploaded Image" style={{zIndex:'5', position: 'absolute', width: '300px', height: '210px', margin: '0 auto', borderRadius: '8px' }} /> */}
                     <label htmlFor="raised-button-file" style={{width: '180px', margin: '0 auto', marginTop: '215px'}}>

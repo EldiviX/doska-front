@@ -24,7 +24,7 @@ const ProtectedRouteId = ({
 
 const fetchAdDetails = async (adId) => {
     try {
-        const response = await fetch(`http://localhost:4444/ads/${adId}`);
+        const response = await fetch(`https://doska-ads.ru:8443/ads/${adId}`);
         
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -86,7 +86,7 @@ const AdEditWrapper = () => {
     const createAds = async () => {
         try {
             console.log('@'+imageUrl);
-            const response = await fetch(`http://localhost:4444/ads/${id}`, {
+            const response = await fetch(`https://doska-ads.ru:8443/ads/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -129,10 +129,10 @@ const AdEditWrapper = () => {
             const formData = new FormData();
             const file = event.target.files[0];
             formData.append('image', file);
-            const { data } = await axios.post('http://localhost:4444/upload', formData, {
+            const { data } = await axios.post('https://doska-ads.ru:8443/upload', formData, {
                 headers: {
-                  'Content-Type': 'multipart/form-data',
-                  'Authorization': 'Bearer ' + token
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': 'Bearer ' + token
                 }
             });
             setImageUrl(data.url);
@@ -171,10 +171,19 @@ const AdEditWrapper = () => {
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
                             >
-                                <MenuItem value={'Без категории'}>Без категории</MenuItem>
-                                <MenuItem value={'Одежда'}>Одежда</MenuItem>
-                                <MenuItem value={'Недвижимость'}>Недвижимость</MenuItem>
-                                <MenuItem value={'Животные'}>Животные</MenuItem>
+                                <MenuItem value={'Без категории'}>❌ Без категории</MenuItem>
+                                <MenuItem value={'Недвижимость'}>🏠 Недвижимость</MenuItem>
+                                <MenuItem value={'Вакансии'}>💼 Вакансии</MenuItem>
+                                <MenuItem value={'Животные'}>🐶 Животные</MenuItem>
+                                <MenuItem value={'Электроника'}>💻 Электроника</MenuItem>
+                                <MenuItem value={'Одежда и аксессуары'}>👕 Одежда и аксессуары</MenuItem>
+                                <MenuItem value={'Ювелирные изделия и часы'}>⌚ Ювелирные изделия и часы</MenuItem>
+                                <MenuItem value={'Медиа и развлечения'}>🎬 Медиа и развлечения</MenuItem>
+                                <MenuItem value={'Товары для детей'}>👶 Товары для детей</MenuItem>
+                                <MenuItem value={'Книги и канцелярия'}>📚 Книги и канцелярия</MenuItem>
+                                <MenuItem value={'Строительство и ремонт'}>🛠️ Строительство и ремонт</MenuItem>
+                                <MenuItem value={'Авто и мото'}>🚗 Авто и мото</MenuItem>
+                                <MenuItem value={'Продукты питания'}>🍎 Продукты питания</MenuItem>
                             </Select>
                         </div>
                         <div className="create-line">
@@ -254,7 +263,7 @@ const AdEditWrapper = () => {
                             onChange={handleChangeFile}
                         />
                         <div style={{position: 'absolute', width: '300px', height: '210px', margin: '0 auto', borderRadius: '8px' }}>
-                        <img src={imageUrl ? `http://localhost:4444${imageUrl}` : image}  style={{width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <img src={imageUrl ? `https://doska-ads.ru:8443${imageUrl}` : image}  style={{width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <label htmlFor="raised-button-file" style={{width: '180px', margin: '0 auto', marginTop: '215px'}}>
                             <Button variant="text" component="span">

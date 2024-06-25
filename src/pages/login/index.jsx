@@ -1,11 +1,9 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie'
 import styles from "./Login.module.scss";
 import './style.css';
 
@@ -18,10 +16,13 @@ export default function Login() {
 
     const loginUser = async () => {
         try {
-            const response = await fetch('http://localhost:4444/login', {
+            const response = await fetch('https://doska-ads.ru:8443/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    // "access-control-allow-origin": "*",
+                    // 'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                    // 'Access-Control-Allow-Methods': '*',
                 },
                 body: JSON.stringify({
                     "email": email,
@@ -90,6 +91,7 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 label="Пароль"
+                type="password"
                 fullWidth
                 error={password === '' && errorMessage !== ''}
                 helperText={password === '' && errorMessage !== '' ? 'Это поле обязательно' : ''}

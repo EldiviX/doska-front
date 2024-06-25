@@ -2,6 +2,7 @@ import AdsPage from './pages/ads/index'
 import AdDetails from './pages/ad/index'
 import New from './pages/type/new/index'
 import Login from './pages/login/index'
+import Help from './pages/help/index'
 import Registration from './pages/registration/index'
 import Admin from './pages/admin'
 import Moderator from './pages/moderator'
@@ -53,6 +54,7 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/registration" element={<Registration />} />
                 <Route path='/create' element={<Create />} />
+                <Route path='/help' element={<Help />} />
                 <Route path='/ads/:id' element={<AdDetails />} />
                 <Route path='/ads/edit/:id' element={<AdEditWrappe />} />
 

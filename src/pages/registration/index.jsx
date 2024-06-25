@@ -22,10 +22,10 @@ export default function Registration() {
 
     const registerUser = async () => {
         try {
-            const response = await fetch('http://localhost:4444/register', {
+            const response = await fetch('https://doska-ads.ru:8443/register', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     "email": email,
@@ -39,13 +39,28 @@ export default function Registration() {
                 const responseData = await response.json();
                 console.log('Пользователь зарегистрирован успешно!');
                 setErrorMessage('');
-
+                
                 localStorage.setItem('token', responseData.token);
                 localStorage.setItem('role', 'user');
 
-                console.log(localStorage.getItem('token'))
+                console.log('@:' + localStorage.getItem('token'))
 
                 navigateTo('/');
+                function parseJwt(token) {
+                    let base64Url = token.split('.')[1];
+                    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                    let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                
+                    return JSON.parse(jsonPayload);
+                }
+                
+                let token = localStorage.getItem('token');
+                if (token) {
+                    let decodedToken = parseJwt(token);
+                    localStorage.setItem('userId', decodedToken._id);
+                }
                 window.location.reload();
             } else if (response.status === 400) {
                 const responseData = await response.json();
@@ -66,7 +81,7 @@ export default function Registration() {
 
     return (
         <div className='login-peper'>
-            <Typography classes={{ root: styles.title }} variant="h5">
+            <Typography classes={{ root: styles.title }} style={{ color: '#3c3c3c' }} variant="h5">
                 Создание аккаунта
             </Typography>
             <div className={styles.avatar}>
@@ -94,6 +109,7 @@ export default function Registration() {
                 onChange={(e) => setPassword(e.target.value)}
                 label="Пароль"
                 fullWidth
+                type='password'
                 value={password}
                 error={password === '' && errorMessage !== ''}
                 helperText={password === '' && errorMessage !== '' ? 'Это поле обязательно' : ''}

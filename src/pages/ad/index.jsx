@@ -22,11 +22,11 @@ export default function Ad() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:4444/ads/${id}`)
+        axios.get(`https://doska-ads.ru:8443/ads/${id}`)
             .then((response) => {
                 console.log('Данные из MongoDB:', response);
                 setDetails(response.data);
-                setUrlImage(`http://localhost:4444${response.data.imageUrl}`)
+                setUrlImage(`https://doska-ads.ru:8443${response.data.imageUrl}`)
             })
             .catch((error) => {
                 console.error('Ошибка при запросе:', error);
@@ -35,10 +35,10 @@ export default function Ad() {
     }, []);
        
     async function handleClickDone() {
-        const response = await fetch(`http://localhost:4444/ads/${id}`, {
+        const response = await fetch(`https://doska-ads.ru:8443/ads/${id}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 ...details,
@@ -55,10 +55,10 @@ export default function Ad() {
     }
 
     async function handleClickRemove() {
-        const response = await fetch(`http://localhost:4444/ads/${id}`, {
+        const response = await fetch(`https://doska-ads.ru:8443/ads/${id}`, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             }
         });
 
@@ -89,14 +89,14 @@ export default function Ad() {
                 <div className="ad-type">{details.title}</div>
                 <div className="ad-place">
                     <div style={{display: 'flex', flexDirection: 'row'}}>
-                        {urlImage === 'http://localhost:4444' ? 
-                            <div className="ad-place_box-img" style={{backgroundImage: `url(${image})`, backgroundSize: 'cover', backdropFilter: 'blur(7px)' }}>
+                        {urlImage === 'https://doska-ads.ru:8443' ? 
+                            <div className="ad-place_box-img" style={{backgroundImage: `url(${image})`, backgroundSize: 'cover', backdropFilter: 'blur(5px)' }}>
                                 <div className='box-img-filter'>
                                     <img className='box-img_img' src={image} alt="Image" />
                                 </div>
                             </div>
                         :
-                            <div className="ad-place_box-img" style={{backgroundImage: `url(${urlImage})`, backgroundSize: 'cover', backdropFilter: 'blur(7px)' }}>
+                            <div className="ad-place_box-img" style={{backgroundImage: `url(${urlImage})`, backgroundSize: 'cover', backdropFilter: 'blur(5px)' }}>
                                 <div className='box-img-filter'>
                                     {urlImage && <img className='box-img_img' src={urlImage} alt="Image" />}
                                 </div>

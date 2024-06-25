@@ -1,4 +1,5 @@
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
+import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react'
@@ -33,6 +34,11 @@ export default function Header() {
                 </Link>
             </div>
             <div className="buttons">
+                <Link to="/help" style={{marginRight: 10}}>
+                    <IconButton >
+                        <HeadsetMicIcon />
+                    </IconButton>
+                </Link>
                 {(!localStorage.getItem('token') || localStorage.getItem('token') === 'undefined') ? (
                     <>
                         <Link to="/login">

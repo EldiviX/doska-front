@@ -48,7 +48,7 @@
     height: 100%;
     background-color: rgba(70, 70, 70, 0.5);
     display: flex;
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(20px);
     
 }
 
@@ -101,6 +101,7 @@
 .ad-place_text-description {
     font-size: 18px;
     width: 850px;
+    white-space: 'pre-wrap', 
 }
 
 .ad-place-check {
